@@ -33,7 +33,7 @@ namespace Advanced_Lesson_1_OOP
 
     public interface IShape
     {
-        void Draw();
+        int Draw();
     }
 
     class Rectangle : IShape
@@ -47,14 +47,14 @@ namespace Advanced_Lesson_1_OOP
             this.height = height;
         }
 
-        public void Draw()
+        public int Draw()
         {
-            Console.WriteLine($"Drawing Rectangle {this.width}x{this.height}");
+            return (int)width*height;
         }
     }
 
 
-    class Circle : IShape
+    public class Circle : IShape
     {
         private int rad;
 
@@ -63,10 +63,10 @@ namespace Advanced_Lesson_1_OOP
             this.rad = rad;
         }
 
-        public void Draw()
+        public int Draw()
         {
-            Console.WriteLine($"Drawing Circle R{this.rad}");
-        }
+			return (int)Math.PI*rad*rad;
+		}
     }
 
 
@@ -75,18 +75,21 @@ namespace Advanced_Lesson_1_OOP
         private int a;
         private int b;
         private int c;
+        private int s;
 
-        public Triangle(int a, int b, int c)
+		public Triangle(int a, int b, int c)
         {
             this.a = a;
             this.b = b;
             this.a = c;
+            s = ( (a + b + c)/2 * ((a + b + c) / 2 - a) * ((a + b + c) / 2 - b) * ((a + b + c) / 2 - c));
+
         }
 
-        public void Draw()
+        public int Draw()
         {
-            Console.WriteLine("Drawing Triangle");
-        }
+			return (int)Math.Sqrt((double)s);
+		}
     }
 
 }
